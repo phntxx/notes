@@ -1,12 +1,12 @@
 FROM node:20-slim as builder
-WORKDIR /usr/src/app
+WORKDIR /app
 COPY package.json .
 COPY package-lock.json* .
 RUN npm ci
 
 FROM node:20-slim
-WORKDIR /usr/src/app
-COPY --from=builder /usr/src/app/ /usr/src/app/
+WORKDIR /app
+COPY --from=builder /app/ /app/
 COPY . .
 
 EXPOSE 8080
