@@ -8,4 +8,7 @@ FROM node:20-slim
 WORKDIR /usr/src/app
 COPY --from=builder /usr/src/app/ /usr/src/app/
 COPY . .
+
+EXPOSE 8080
+
 CMD ["npx", "quartz", "build", "--serve"]
