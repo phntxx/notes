@@ -9,6 +9,9 @@ WORKDIR /app
 COPY --from=builder /app/ /app/
 COPY . .
 
-EXPOSE 8080
+ENV REMOTE_HOST ""
 
-CMD ["npx", "quartz", "build", "--serve"]
+EXPOSE 8080
+EXPOSE 3001
+
+CMD ["npx", "quartz", "build", "--remoteDevHost", "$REMOTE_HOST", "--serve"]
